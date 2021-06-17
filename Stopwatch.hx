@@ -5,7 +5,7 @@ using api.IdeckiaApi;
 import datetime.DateTime;
 
 typedef Props = {
-	@:editable("The timer will run at the interval of this millitime.", 's', ['m', 's'])
+	@:editable("The timer will run at the interval of this value.", 's', ['m', 's'])
 	var precission:String;
 	@:editable("If true it will reset the timer to 0. If false, it will continue from where it was paused.", false)
 	var ?reset:Bool;

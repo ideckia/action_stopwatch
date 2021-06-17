@@ -6,10 +6,11 @@ Timer
 
 ## Properties
 
-| Name | Type | Description | Default | Possible values |
+| Name | Type | Default | Description | Possible values |
 | ----- |----- | ----- | ----- | ----- |
-| precission | String | The timer will run at the interval of this millitime. | 's' | [m,s,100 ms] |
-| reset | Null<Bool> | If true it will reset the timer to 0. If false, it will continue from where it was paused. | false | null |
+| precission | String | 's' | The timer will run at the interval of this value. | [m,s] |
+| reset | Null<Bool> | false | If true it will reset the timer to 0. If false, it will continue from where it was paused. | null |
+
 
 ## Example in layout file
 
