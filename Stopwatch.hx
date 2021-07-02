@@ -21,7 +21,7 @@ class Stopwatch extends IdeckiaAction {
 	var timer:haxe.Timer;
 	var time:DateTime = 0;
 
-	override public function init() {
+	override public function init(_) {
 		precissionMs = switch this.props.precission {
 			case 'm':
 				MINUTES_PRECISSION;
