@@ -43,7 +43,7 @@ class Stopwatch extends IdeckiaAction {
 	function timerRun() {
 		time = time.add((precissionMs == MINUTES_PRECISSION) ? Minute(1) : Second(1));
 		state.text = time.format('%T');
-		server.sendToClient(state);
+		server.updateClientState(state);
 	}
 
 	public function execute(currentState:ItemState):js.lib.Promise<ItemState> {
