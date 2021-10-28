@@ -11,6 +11,7 @@ typedef Props = {
 	var ?reset:Bool;
 }
 
+@:name('stopwatch')
 class Stopwatch extends IdeckiaAction {
 	static inline var MINUTES_PRECISSION:UInt = 60 * 1000;
 	static inline var SECONDS_PRECISSION:UInt = 1000;
@@ -21,7 +22,7 @@ class Stopwatch extends IdeckiaAction {
 	var timer:haxe.Timer;
 	var time:DateTime = 0;
 
-	override public function init(_) {
+	override public function init(initialState:ItemState):js.lib.Promise<ItemState> {
 		precissionMs = switch this.props.precission {
 			case 'm':
 				MINUTES_PRECISSION;
@@ -33,6 +34,7 @@ class Stopwatch extends IdeckiaAction {
 		}
 
 		paused = true;
+		return new js.lib.Promise((resolve, reject) -> resolve(initialState));
 	}
 
 	function newTimer() {
