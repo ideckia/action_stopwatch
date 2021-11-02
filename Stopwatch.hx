@@ -29,7 +29,7 @@ class Stopwatch extends IdeckiaAction {
 			case 's':
 				SECONDS_PRECISSION;
 			case x:
-				server.log('Not identified precission: $x. Using the default "s".');
+				server.log.error('Not identified precission: $x. Using the default "s".');
 				SECONDS_PRECISSION;
 		}
 
