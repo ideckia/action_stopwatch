@@ -12,6 +12,7 @@ typedef Props = {
 }
 
 @:name('stopwatch')
+@:description('Executing this action, will start and pause a timer shown in the button itself.')
 class Stopwatch extends IdeckiaAction {
 	static inline var MINUTES_PRECISSION:UInt = 60 * 1000;
 	static inline var SECONDS_PRECISSION:UInt = 1000;
