@@ -1,16 +1,22 @@
-# Action for ideckia: Stopwatch
+# Action for [ideckia](https://ideckia.github.io/): Stopwatch
 
-## Definition
+## Description
 
-Timer
+Simple timer
 
 ## Properties
 
 | Name | Type | Default | Description | Possible values |
 | ----- |----- | ----- | ----- | ----- |
 | precission | String | 's' | The timer will run at the interval of this value. | [m,s] |
-| reset | Null<Bool> | false | If true it will reset the timer to 0. If false, it will continue from where it was paused. | null |
 
+## On single click
+
+Starts or pauses the timer
+
+## On long press
+
+Resets timer to 0
 
 ## Example in layout file
 
