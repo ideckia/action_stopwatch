@@ -7,8 +7,6 @@ import datetime.DateTime;
 typedef Props = {
 	@:editable("The timer will run at the interval of this value.", 's', ['m', 's'])
 	var precission:String;
-	@:editable("If true it will reset the timer to 0. If false, it will continue from where it was paused.", false)
-	var ?reset:Bool;
 }
 
 @:name('stopwatch')
@@ -35,7 +33,7 @@ class Stopwatch extends IdeckiaAction {
 		}
 
 		paused = true;
-		return new js.lib.Promise((resolve, reject) -> resolve(initialState));
+		return js.lib.Promise.resolve(initialState);
 	}
 
 	function newTimer() {
@@ -52,8 +50,6 @@ class Stopwatch extends IdeckiaAction {
 	public function execute(currentState:ItemState):js.lib.Promise<ItemState> {
 		state = currentState;
 		if (paused) {
-			if (props.reset)
-				time = 0;
 			newTimer();
 		} else {
 			timer.stop();
@@ -64,6 +60,11 @@ class Stopwatch extends IdeckiaAction {
 
 		currentState.bgColor = paused ? 'ffaa0000' : 'ff00aa00';
 
-		return new js.lib.Promise((resolve, reject) -> resolve(currentState));
+		return js.lib.Promise.resolve(currentState);
+	}
+
+	override function onLongPress(currentState:ItemState):js.lib.Promise<ItemState> {
+		time = 0;
+		return super.onLongPress(currentState);
 	}
 }
