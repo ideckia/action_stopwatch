@@ -47,7 +47,7 @@ class Stopwatch extends IdeckiaAction {
 		server.updateClientState(state);
 	}
 
-	public function execute(currentState:ItemState):js.lib.Promise<ItemState> {
+	public function execute(currentState:ItemState):js.lib.Promise<ActionOutcome> {
 		state = currentState;
 		if (paused) {
 			newTimer();
@@ -60,10 +60,10 @@ class Stopwatch extends IdeckiaAction {
 
 		currentState.bgColor = paused ? 'ffaa0000' : 'ff00aa00';
 
-		return js.lib.Promise.resolve(currentState);
+		return js.lib.Promise.resolve(new ActionOutcome({state: currentState}));
 	}
 
-	override function onLongPress(currentState:ItemState):js.lib.Promise<ItemState> {
+	override function onLongPress(currentState:ItemState):js.lib.Promise<ActionOutcome> {
 		time = 0;
 		return super.onLongPress(currentState);
 	}
