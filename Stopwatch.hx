@@ -5,12 +5,13 @@ using api.IdeckiaApi;
 import datetime.DateTime;
 
 typedef Props = {
-	@:editable("The timer will run at the interval of this value.", 's', ['m', 's'])
+	@:editable("prop_precission", 's', ['m', 's'])
 	var precission:String;
 }
 
 @:name('stopwatch')
-@:description('Executing this action, will start and pause a timer shown in the button itself.')
+@:description('action_description')
+@:localize
 class Stopwatch extends IdeckiaAction {
 	static inline var MINUTES_PRECISSION:UInt = 60 * 1000;
 	static inline var SECONDS_PRECISSION:UInt = 1000;
@@ -28,7 +29,7 @@ class Stopwatch extends IdeckiaAction {
 			case 's':
 				SECONDS_PRECISSION;
 			case x:
-				server.log.error('Not identified precission: $x. Using the default "s".');
+				core.log.error('Not identified precission: $x. Using the default "s".');
 				SECONDS_PRECISSION;
 		}
 
@@ -44,7 +45,7 @@ class Stopwatch extends IdeckiaAction {
 	function timerRun() {
 		time = time.add((precissionMs == MINUTES_PRECISSION) ? Minute(1) : Second(1));
 		state.text = time.format('%T');
-		server.updateClientState(state);
+		core.updateClientState(state);
 	}
 
 	public function execute(currentState:ItemState):js.lib.Promise<ActionOutcome> {

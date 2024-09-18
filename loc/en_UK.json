@@ -1,0 +1,10 @@
+[
+	{
+		"id": "action_description",
+		"text": "Executing this action, will start and pause a timer shown in the button itself."
+	},
+	{
+		"id": "prop_precission",
+		"text": "The timer will run at the interval of this value."
+	}
+]

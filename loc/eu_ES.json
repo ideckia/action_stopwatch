@@ -1,0 +1,10 @@
+[
+	{
+		"id": "action_description",
+		"text": "Ekintza hau exekutatuta, botoian bertan ageri den tenporizadorea hasi edo geldituko da."
+	},
+	{
+		"id": "prop_precission",
+		"text": "Tenporizadorea maiztasun honekin eguneratuko da."
+	}
+]
