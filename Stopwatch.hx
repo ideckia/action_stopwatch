@@ -37,7 +37,16 @@ class Stopwatch extends IdeckiaAction {
 		return js.lib.Promise.resolve(initialState);
 	}
 
+	override function deinit() {
+		if (timer != null)
+			timer.stop();
+		timer = null;
+	}
+
 	function newTimer() {
+		if (timer != null)
+			timer.stop();
+
 		timer = new haxe.Timer(precissionMs);
 		timer.run = timerRun;
 	}
